@@ -23,7 +23,19 @@
 
 <div class="flex flex-col justify-center">
   <div class="grid grid-cols-4 gap-4">
-    <git-card></git-card>
+    <git-card
+      [avatar]="
+        'https://github.com/salah3x/most-starred-github-repos/raw/master/src/assets/icon/favicon.png'
+      "
+      [url]="'https://github.com/rmsohaila'"
+      [author]="'Sohail Arshad'"
+      [name]="'Repository Name Demo'"
+      [description]="
+        'The task is to implement a small webapp that will list the most starred Github repos that were created in the last 30 days. You will be fetching the sorted JSON data directly from the Github API'
+      "
+      [stars]="'234'"
+      [issues]="'114'"
+    ></git-card>
   </div>
   <button
     class="
