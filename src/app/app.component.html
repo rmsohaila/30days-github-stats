@@ -10,8 +10,16 @@
     w-full
     z-10
     top-0
-    text-
+    text-white
   "
 >
-  <h1>Last 30 Days Github Repositories</h1>
+  <div class="container mx-auto px-4">
+    <span class="text-xl font-bold">Last 30 Days Github Repositories</span>
+  </div>
 </nav>
+
+<div class="container shadow-lg mx-auto bg-white mt-24 md:mt-18 rounded">
+  <div class="bg-white rounded m-2 p-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>
