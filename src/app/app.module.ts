@@ -1,14 +1,24 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CardComponent } from './card/card.component';
-import { DetailComponent } from './detail/detail.component';
-import { IndexComponent } from './index/index.component';
+import { CardComponent } from './components/card/card.component';
+import { CommonModule } from '@angular/common';
+import { DetailComponent } from './components/detail/detail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { IndexComponent } from './components/index/index.component';
 import { NgModule } from '@angular/core';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, CardComponent, IndexComponent, DetailComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

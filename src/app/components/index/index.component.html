@@ -1,7 +1,10 @@
+<div *ngIf="loading">Loading...</div>
 <ul>
-  <li>
+  <li *ngFor="let language of languages">
     <div class="card">
-      <h1><a [routerLink]="'details/cplusplus'">Language</a></h1>
+      <h1>
+        <a [routerLink]="'details/' + language.title">{{ language.title }}</a>
+      </h1>
       <button
         class="
           inline-flex
@@ -18,7 +21,7 @@
           hover:bg-indigo-700
         "
       >
-        Popularity: <span>3</span>
+        Popularity: <span>{{ language.popularity }}</span>
       </button>
       <button
         class="
@@ -36,7 +39,7 @@
           hover:bg-grey-700
         "
       >
-        Repositories: <span>3</span>
+        Repositories: <span>{{ language.repositoryCount }}</span>
       </button>
     </div>
   </li>

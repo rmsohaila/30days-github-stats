@@ -14,6 +14,7 @@
       pl-2
       pr-3
       py-1
+      font-light
     "
   >
     <span class="material-icons mr-2 mt-1">arrow_back</span>
@@ -28,7 +29,7 @@
         'https://github.com/salah3x/most-starred-github-repos/raw/master/src/assets/icon/favicon.png'
       "
       [url]="'https://github.com/rmsohaila'"
-      [author]="'Sohail Arshad'"
+      [owner]="'Sohail Arshad'"
       [name]="'Repository Name Demo'"
       [description]="
         'The task is to implement a small webapp that will list the most starred Github repos that were created in the last 30 days. You will be fetching the sorted JSON data directly from the Github API'
@@ -38,6 +39,7 @@
     ></git-card>
   </div>
   <button
+    (click)="loadMore()"
     class="
       inline-flex
       items-center
@@ -55,7 +57,7 @@
       duration-150
     "
   >
-    <div class="loader"></div>
-    More
+    <div class="loader" *ngIf="loadingMore"></div>
+    <span *ngIf="!loadingMore">More</span>
   </button>
 </div>
