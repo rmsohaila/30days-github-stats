@@ -1,5 +1,5 @@
 export interface ILanguage {
-    title: String;
-    repositoryCount: Number;
-    popularity: Number;
+    title: string;
+    repositoryCount: number;
+    popularity: number;
 }

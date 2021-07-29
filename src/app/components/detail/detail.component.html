@@ -1,63 +1,64 @@
-<h1>
-  {{ lang }}
-  <a
-    [routerLink]="['/']"
-    class="
-      float-right
-      inline-flex
-      items-center
-      rounded-xl
-      border border-gray-300
-      hover:shadow-md hover:border-gray-400
-      transition-all
-      duration-150
-      pl-2
-      pr-3
-      py-1
-      font-light
-    "
-  >
-    <span class="material-icons mr-2 mt-1">arrow_back</span>
-    <span>Back</span>
-  </a>
-</h1>
-
-<div class="flex flex-col justify-center">
-  <div class="grid grid-cols-4 gap-4">
-    <git-card
-      [avatar]="
-        'https://github.com/salah3x/most-starred-github-repos/raw/master/src/assets/icon/favicon.png'
+<div class="flex flex-col">
+  <h1>
+    Language: {{ lang }}
+    <a
+      [routerLink]="['/']"
+      class="
+        float-right
+        inline-flex
+        items-center
+        rounded-xl
+        border border-gray-300
+        hover:shadow-md hover:border-gray-400
+        transition-all
+        duration-150
+        pl-2
+        pr-3
+        py-1
+        font-light
       "
-      [url]="'https://github.com/rmsohaila'"
-      [owner]="'Sohail Arshad'"
-      [name]="'Repository Name Demo'"
-      [description]="
-        'The task is to implement a small webapp that will list the most starred Github repos that were created in the last 30 days. You will be fetching the sorted JSON data directly from the Github API'
+    >
+      <span class="material-icons mr-2 mt-1">arrow_back</span>
+      <span>Back</span>
+    </a>
+  </h1>
+  <div class="flex flex-col flex-1" *ngIf="loading">Loading...</div>
+  <div class="flex flex-col justify-center" *ngIf="repositories">
+    <div class="grid grid-cols-4 gap-4">
+      <git-card
+        *ngFor="let repo of repositories"
+        [avatar]="repo.owner.avatar"
+        [url]="repo.url"
+        [owner]="repo.owner.username"
+        [name]="repo.name"
+        [description]="repo.description"
+        [stars]="repo.starsCount"
+        [issues]="repo.issuesCount"
+      ></git-card>
+    </div>
+    <button
+      class="
+        inline-flex
+        items-center
+        justify-center
+        px-5
+        py-2
+        border border-transparent
+        text-base
+        font-medium
+        rounded-md
+        text-blue-800
+        bg-blue-200
+        hover:bg-blue-500 hover:text-white
+        transition-all
+        duration-150
       "
-      [stars]="'234'"
-      [issues]="'114'"
-    ></git-card>
+      (click)="loadMore()"
+    >
+      <span *ngIf="loadingMore" class="font-bold text-sm text-white">
+        Loading...
+      </span>
+      <span *ngIf="!loadingMore">More</span>
+    </button>
   </div>
-  <button
-    (click)="loadMore()"
-    class="
-      inline-flex
-      items-center
-      justify-center
-      px-5
-      py-2
-      border border-transparent
-      text-base
-      font-medium
-      rounded-md
-      text-blue-800
-      bg-blue-200
-      hover:bg-blue-500 hover:text-white
-      transition-all
-      duration-150
-    "
-  >
-    <div class="loader" *ngIf="loadingMore"></div>
-    <span *ngIf="!loadingMore">More</span>
-  </button>
 </div>

@@ -1,11 +1,11 @@
 import { IRepositoryOwner } from './IRepositoryOwner';
 
 export interface IRepository {
-  name: String;
-  description: String;
-  url: String;
-  starsCount: Number;
-  issuesCount: Number;
+  name: string;
+  description: string;
+  url: string;
+  starsCount: number;
+  issuesCount: number;
   createdAt: Date;
   owner: IRepositoryOwner;
 }

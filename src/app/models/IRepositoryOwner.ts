@@ -1,4 +1,4 @@
 export interface IRepositoryOwner {
-  avatar: String;
-  username: String;
+  avatar: string;
+  username: string;
 }

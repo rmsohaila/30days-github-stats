@@ -8,10 +8,17 @@ import { DetailComponent } from './components/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { NgModule } from '@angular/core';
+import { NotFound404Component } from './components/not-found404/not-found404.component';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, IndexComponent, DetailComponent],
+  declarations: [
+    AppComponent,
+    CardComponent,
+    IndexComponent,
+    DetailComponent,
+    NotFound404Component,
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,

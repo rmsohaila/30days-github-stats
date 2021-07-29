@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
 import { IndexComponent } from './components/index/index.component';
 import { NgModule } from '@angular/core';
+import { NotFound404Component } from './components/not-found404/not-found404.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'details/:language',
     component: DetailComponent,
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: NotFound404Component,
   },
 ];
 

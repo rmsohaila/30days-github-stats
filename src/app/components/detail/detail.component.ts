@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { IRepository } from 'src/app/models/IRepository';
+import { RepositoryService } from 'src/app/services/repository.service';
 
 @Component({
   selector: 'app-detail',
@@ -8,19 +10,36 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
+  loading = false;
   loadingMore = false;
   lang: string = '';
+  repositories: IRepository[] = [];
+  private page: number = 1;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-    this.lang = activatedRoute.snapshot.paramMap.get('language') ?? '';
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private service: RepositoryService
+  ) {}
+
+  ngOnInit(): void {
+    this.lang = this.activatedRoute.snapshot.paramMap.get('language') ?? '';
+    this.loading = true;
+    this.service
+      .getRepositories(this.page, this.lang)
+      .subscribe((repos: IRepository[]) => {
+        this.repositories = repos;
+        this.loading = false;
+      });
   }
-
-  ngOnInit(): void {}
 
   loadMore() {
     this.loadingMore = true;
-    setTimeout(() => {
-      this.loadingMore = false;
-    }, 2000);
+    this.page = this.page + 1;
+    this.service
+      .getRepositories(this.page, this.lang)
+      .subscribe((repos: IRepository[]) => {
+        this.repositories = this.repositories.concat(repos);
+        this.loadingMore = false;
+      });
   }
 }
