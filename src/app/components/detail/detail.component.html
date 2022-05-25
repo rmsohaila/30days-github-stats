@@ -3,26 +3,13 @@
     Language: {{ lang }}
     <a
       [routerLink]="['/']"
-      class="
-        float-right
-        inline-flex
-        items-center
-        rounded-xl
-        border border-gray-300
-        hover:shadow-md hover:border-gray-400
-        transition-all
-        duration-150
-        pl-2
-        pr-3
-        py-1
-        font-light
-      "
+      class="float-right inline-flex items-center rounded-xl border border-gray-300 hover:shadow-md hover:border-gray-400 transition-all duration-150 pl-2 pr-3 py-1 font-light"
     >
       <span class="material-icons mr-2 mt-1">arrow_back</span>
       <span>Back</span>
     </a>
   </h1>
-  <div class="flex flex-col flex-1" *ngIf="loading">Loading...</div>
+  <app-loader *ngIf="loading"></app-loader>
   <div class="flex flex-col justify-center" *ngIf="repositories">
     <div class="grid grid-cols-4 gap-4">
       <git-card
@@ -37,22 +24,7 @@
       ></git-card>
     </div>
     <button
-      class="
-        inline-flex
-        items-center
-        justify-center
-        px-5
-        py-2
-        border border-transparent
-        text-base
-        font-medium
-        rounded-md
-        text-blue-800
-        bg-blue-200
-        hover:bg-blue-500 hover:text-white
-        transition-all
-        duration-150
-      "
+      class="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-blue-800 bg-blue-200 hover:bg-blue-500 hover:text-white transition-all duration-150"
       (click)="loadMore()"
     >
       <span *ngIf="loadingMore" class="font-bold text-sm text-white">

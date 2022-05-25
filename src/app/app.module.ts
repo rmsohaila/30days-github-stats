@@ -10,6 +10,7 @@ import { IndexComponent } from './components/index/index.component';
 import { NgModule } from '@angular/core';
 import { NotFound404Component } from './components/not-found404/not-found404.component';
 import { ToastrModule } from 'ngx-toastr';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     IndexComponent,
     DetailComponent,
     NotFound404Component,
+    LoaderComponent,
   ],
   imports: [
     HttpClientModule,
