@@ -16,7 +16,13 @@ export class CardComponent implements OnInit {
   @Input() public avatar: string = '';
   @Input() public owner: string = '';
 
+  showLongDescription = false;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleDescription() {
+    this.showLongDescription = !this.showLongDescription;
+  }
 }

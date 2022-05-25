@@ -1,17 +1,6 @@
 <div class="flex w-full px-4 py-6">
   <div
-    class="
-      max-w-xs
-      bg-white
-      hover:shadow-xl
-      shadow-md
-      transition-all
-      duration-150
-      rounded-lg
-      overflow-hidden
-      my-4
-      border border-gray-200
-    "
+    class="max-w-xs bg-white hover:shadow-xl shadow-md transition-all duration-150 rounded-lg overflow-hidden my-4 border border-gray-200"
   >
     <img
       class="w-full h-56 object-cover object-center"
@@ -28,10 +17,18 @@
           {{ name }}
         </a>
       </h1>
-      <p class="py-2 text-lg text-gray-700">
-        {{ description }}
+      <p class="py-2 text-sm text-gray-700">
+        <span *ngIf="!showLongDescription">
+          {{ showLongDescription | json }}
+          {{ description | slice: 0:100 }}
+        </span>
+        <span *ngIf="showLongDescription"> {{ description }} - </span>
+        <a class="text-blue-500 cursor-pointer" (click)="toggleDescription()">
+          <span *ngIf="!showLongDescription">more...</span>
+          <span *ngIf="showLongDescription">less</span>
+        </a>
       </p>
-      <div class="flex felx-row  mt-4">
+      <div class="flex felx-row mt-4">
         <div class="flex text-gray-700">
           <span class="material-icons text-yellow-500">star_rate</span>
           <h1 class="px-2 text">
