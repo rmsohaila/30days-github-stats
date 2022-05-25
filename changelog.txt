@@ -1,0 +1,8 @@
+# Upgraded to Angular 13.3.9
+1. remove package-lock.json
+2. commit changes
+3. ng update
+4. ng update @angular/cli
+5. ng update @angular/core
+6. npm install
+7. install tailwindcss dependencies
